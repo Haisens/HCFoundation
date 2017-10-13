@@ -9,7 +9,6 @@
 #import "HCViewController.h"
 #import "HCFoundation.h"
 #import "HCView.h"
-#import "UIDevice+HCKeychain.h"
 
 
 @interface HCViewController ()
