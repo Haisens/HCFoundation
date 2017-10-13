@@ -21,7 +21,8 @@ static NSData* hc_digest(NSData *data, CC_DIGEST digest, CC_LONG digestLength) {
 
 @implementation NSData (HCExtension)
 
-#pragma mark =========================SHA加密=========================
+#pragma mark
+#pragma mark --SHA加密
 
 /**
  SHA加密数据
@@ -63,7 +64,8 @@ static NSData* hc_digest(NSData *data, CC_DIGEST digest, CC_LONG digestLength) {
     return [NSData hc_hex:self];
 }
 
-#pragma mark =========================MD5=========================
+#pragma mark
+#pragma mark --MD5
 
 /**
  将数据MD5加密
@@ -107,7 +109,8 @@ static NSData* hc_digest(NSData *data, CC_DIGEST digest, CC_LONG digestLength) {
     return [NSData hc_MD5HexDigest:self];
 }
 
-#pragma mark =========================Base64=========================
+#pragma mark
+#pragma mark --Base64
 
 static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 /**
@@ -190,7 +193,8 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
     return [NSData dataWithBytesNoCopy:bytes length:length];
 }
 
-#pragma mark =========================数据判定=========================
+#pragma mark
+#pragma mark --数据判定
 
 /**
  获取图片数据格式

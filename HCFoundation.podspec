@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'HCFoundation'
-  s.version          = '0.0.2'
+  s.version          = '0.0.3'
   s.summary          = 'iOS基础拓展，简单易用，高效开发首选!'
 
 # This description is used to generate tags and improve search results.

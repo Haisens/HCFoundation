@@ -9,7 +9,8 @@
 
 @interface NSData (HCExtension)
 
-#pragma mark =========================SHA加密=========================
+#pragma mark
+#pragma mark --SHA加密
 
 /**
  SHA加密数据
@@ -31,7 +32,8 @@
  */
 - (NSString *)hc_hex;
 
-#pragma mark =========================MD5=========================
+#pragma mark
+#pragma mark --MD5
 
 /**
  将数据MD5加密
@@ -51,14 +53,16 @@
  */
 -(NSString *)hc_MD5HexDigest;
 
-#pragma mark =========================Base64=========================
+#pragma mark
+#pragma mark --Base64
 
 /**
  将字符串加密为Base64数据
  */
 + (NSData*)hc_dataWithBase64EncodedString:(NSString*)string;
 
-#pragma mark =========================数据判定=========================
+#pragma mark
+#pragma mark --数据判定
 
 /**
  获取图片数据格式

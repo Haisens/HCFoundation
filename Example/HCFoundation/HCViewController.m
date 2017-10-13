@@ -8,6 +8,8 @@
 
 #import "HCViewController.h"
 #import "HCFoundation.h"
+#import "HCView.h"
+
 
 @interface HCViewController ()
 
@@ -18,8 +20,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-	// Do any additional setup after loading the view, typically from a nib.
+    HCView *view = [[HCView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    [self.view addSubview:view];
+    
 }
 
 - (void)didReceiveMemoryWarning
