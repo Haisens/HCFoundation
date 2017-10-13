@@ -8,6 +8,7 @@
 #import "NSObject+HCMethodSwizzling.h"
 #import "NSData+HCExtension.h"
 #import "NSString+HCExtension.h"
+#import "UIDevice+HCKeychain.h"
 #import "HCMacro.h"
 
 

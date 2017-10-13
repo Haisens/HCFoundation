@@ -9,6 +9,7 @@
 #import "HCViewController.h"
 #import "HCFoundation.h"
 #import "HCView.h"
+#import "UIDevice+HCKeychain.h"
 
 
 @interface HCViewController ()
@@ -22,7 +23,18 @@
     [super viewDidLoad];
     HCView *view = [[HCView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     [self.view addSubview:view];
-    
+    NSString *SERVICE_NAME = @"com.vrseen.uuid";//最好用程序的bundle id
+    NSString * str =  [UIDevice getPasswordForUsername:@"UUID" andServiceName:SERVICE_NAME error:nil];  // 从keychain获取数据
+    if ([str length]<=0)
+    {
+        str  = [[[UIDevice currentDevice] identifierForVendor] UUIDString];  // 保存UUID作为手机唯一标识符
+        [UIDevice storeUsername:@"UUID"
+                           andPassword:str
+                        forServiceName:SERVICE_NAME
+                        updateExisting:1
+                                 error:nil];  // 往keychain添加数据
+    }
+    NSLog(@"%@", str);
 }
 
 - (void)didReceiveMemoryWarning
