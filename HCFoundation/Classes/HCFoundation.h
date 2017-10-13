@@ -6,6 +6,7 @@
 //
 
 #import "NSObject+HCMethodSwizzling.h"
+#import "NSData+HCExtension.h"
 
 //RGB颜色十进制
 #define UIColorFromRGB(R, G, B, a)          [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
