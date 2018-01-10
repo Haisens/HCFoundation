@@ -1,5 +1,5 @@
 //
-//  UIDevice+HCKeychain.m
+//  UIDevice+ HCKeychain.m
 //  HCFoundation
 //
 //  Created by yinhaichao on 2017/10/13.
@@ -9,43 +9,43 @@
 
 static NSString *HCKeychainUtilsErrorDomain = @"HCKeychainUtilsErrorDomain";
 
-@implementation UIDevice (HCKeychain)
+@implementation UIDevice(HCKeychain)
 
-+ (NSString *) getPasswordForUsername: (NSString *) username andServiceName: (NSString *) serviceName error: (NSError **) error {
-    if (!username || !serviceName) {
-        if (error != nil) {
++ (NSString *)getPasswordForUsername:(NSString *)username andServiceName:(NSString *)serviceName error:(NSError **)error {
+    if  (!username || !serviceName) {
+        if  (error != nil) {
             *error = [NSError errorWithDomain: HCKeychainUtilsErrorDomain code: -2000 userInfo: nil];
         }
         return nil;
     }
-    
-    if (error != nil) {
+
+    if  (error != nil) {
         *error = nil;
     }
     
-    // Set up a query dictionary with the base query attributes: item type (generic), username, and service
+    // Set up a query dictionary with the base query attributes: item type(generic), username, and service
     
-    NSArray *keys = [[NSArray alloc] initWithObjects: (NSString *) kSecClass, kSecAttrAccount, kSecAttrService, nil];
-    NSArray *objects = [[NSArray alloc] initWithObjects: (NSString *) kSecClassGenericPassword, username, serviceName, nil];
+    NSArray *keys = [[NSArray alloc] initWithObjects:(NSString *)kSecClass, kSecAttrAccount, kSecAttrService, nil];
+    NSArray *objects = [[NSArray alloc] initWithObjects:(NSString *)kSecClassGenericPassword, username, serviceName, nil];
     
     NSMutableDictionary *query = [[NSMutableDictionary alloc] initWithObjects: objects forKeys: keys];
     
     // First do a query for attributes, in case we already have a Keychain item with no password data set.
-    // One likely way such an incorrect item could have come about is due to the previous (incorrect)
-    // version of this code (which set the password as a generic attribute instead of password data).
+    // One likely way such an incorrect item could have come about is due to the previous(incorrect)
+    // version of this code(which set the password as a generic attribute instead of password data).
     
     NSDictionary *attributeResult = NULL;
     NSMutableDictionary *attributeQuery = [query mutableCopy];
-    [attributeQuery setObject: (id) kCFBooleanTrue forKey:(id) kSecReturnAttributes];
+    [attributeQuery setObject:(id)kCFBooleanTrue forKey:(id)kSecReturnAttributes];
     
     CFTypeRef refResult;
-    OSStatus status = SecItemCopyMatching((CFDictionaryRef) attributeQuery, &refResult);
-    attributeResult = (__bridge_transfer NSDictionary *)refResult;
+    OSStatus status = SecItemCopyMatching((CFDictionaryRef)attributeQuery, &refResult);
+    attributeResult =(__bridge_transfer NSDictionary *)refResult;
     
-    if (status != noErr) {
+    if  (status != noErr) {
         // No existing item found--simply return nil for the password
-        if (error != nil && status != errSecItemNotFound) {
-            //Only return an error if a real exception happened--not simply for "not found."
+        if  (error != nil && status != errSecItemNotFound) {
+            //Only return an error if  a real exception happened--not simply for "not found."
             *error = [NSError errorWithDomain: HCKeychainUtilsErrorDomain code: status userInfo: nil];
         }
         
@@ -56,16 +56,16 @@ static NSString *HCKeychainUtilsErrorDomain = @"HCKeychainUtilsErrorDomain";
     
     NSData *resultData = nil;
     NSMutableDictionary *passwordQuery = [query mutableCopy];
-    [passwordQuery setObject: (id) kCFBooleanTrue forKey: (id) kSecReturnData];
+    [passwordQuery setObject:(id)kCFBooleanTrue forKey:(id)kSecReturnData];
     
     CFTypeRef refResultData;
     
-    status = SecItemCopyMatching((CFDictionaryRef) passwordQuery, &refResultData);
+    status = SecItemCopyMatching((CFDictionaryRef)passwordQuery, &refResultData);
     
-    resultData = (__bridge_transfer NSData *)refResultData;
+    resultData =(__bridge_transfer NSData *)refResultData;
     
-    if (status != noErr) {
-        if (status == errSecItemNotFound) {
+    if  (status != noErr) {
+        if  (status == errSecItemNotFound) {
             // We found attributes for the item previously, but no password now, so return a special error.
             // Users of this API will probably want to detect this error and prompt the user to
             // re-enter their credentials.  When you attempt to store the re-entered credentials
@@ -103,7 +103,7 @@ static NSString *HCKeychainUtilsErrorDomain = @"HCKeychainUtilsErrorDomain";
     return password;
 }
 
-+ (BOOL) storeUsername: (NSString *) username andPassword: (NSString *) password forServiceName: (NSString *) serviceName updateExisting: (BOOL) updateExisting error: (NSError **) error
++ (BOOL)storeUsername:(NSString *)username andPassword:(NSString *)password forServiceName:(NSString *)serviceName updateExisting:(BOOL)updateExisting error:(NSError **)error
 {
     if (!username || !password || !serviceName)
     {
@@ -114,13 +114,13 @@ static NSString *HCKeychainUtilsErrorDomain = @"HCKeychainUtilsErrorDomain";
         return NO;
     }
     
-    // See if we already have a password entered for these credentials.
+    // See if  we already have a password entered for these credentials.
     NSError *getError = nil;
     NSString *existingPassword = [UIDevice getPasswordForUsername: username andServiceName: serviceName error:&getError];
     
     if ([getError code] == -1999)
     {
-        // There is an existing entry without a password properly stored (possibly as a result of the previous incorrect version of this code.
+        // There is an existing entry without a password properly stored(possibly as a result of the previous incorrect version of this code.
         // Delete the existing item before moving on entering a correct one.
         
         getError = nil;
@@ -159,15 +159,15 @@ static NSString *HCKeychainUtilsErrorDomain = @"HCKeychainUtilsErrorDomain";
         
         if (![existingPassword isEqualToString:password] && updateExisting)
         {
-            //Only update if we're allowed to update existing.  If not, simply do nothing.
+            //Only update if  we're allowed to update existing.  if  not, simply do nothing.
             
-            NSArray *keys = [[NSArray alloc] initWithObjects: (NSString *) kSecClass,
+            NSArray *keys = [[NSArray alloc] initWithObjects:(NSString *)kSecClass,
                              kSecAttrService,
                              kSecAttrLabel,
                              kSecAttrAccount,
                              nil];
             
-            NSArray *objects = [[NSArray alloc] initWithObjects: (NSString *) kSecClassGenericPassword,
+            NSArray *objects = [[NSArray alloc] initWithObjects:(NSString *)kSecClassGenericPassword,
                                 serviceName,
                                 serviceName,
                                 username,
@@ -175,22 +175,22 @@ static NSString *HCKeychainUtilsErrorDomain = @"HCKeychainUtilsErrorDomain";
             
             NSDictionary *query = [[NSDictionary alloc] initWithObjects: objects forKeys: keys];
             
-            status = SecItemUpdate((CFDictionaryRef) query, (CFDictionaryRef) [NSDictionary dictionaryWithObject: [password dataUsingEncoding: NSUTF8StringEncoding] forKey: (NSString *) kSecValueData]);
+            status = SecItemUpdate((CFDictionaryRef)query,(CFDictionaryRef)[NSDictionary dictionaryWithObject: [password dataUsingEncoding: NSUTF8StringEncoding] forKey:(NSString *)kSecValueData]);
         }
     }
     else
     {
-        // No existing entry (or an existing, improperly entered, and therefore now
+        // No existing entry(or an existing, improperly entered, and therefore now
         // deleted, entry).  Create a new entry.
         
-        NSArray *keys = [[NSArray alloc] initWithObjects: (NSString *) kSecClass,
+        NSArray *keys = [[NSArray alloc] initWithObjects:(NSString *)kSecClass,
                          kSecAttrService,
                          kSecAttrLabel,
                          kSecAttrAccount,
                          kSecValueData,
                          nil];
         
-        NSArray *objects = [[NSArray alloc] initWithObjects: (NSString *) kSecClassGenericPassword,
+        NSArray *objects = [[NSArray alloc] initWithObjects:(NSString *)kSecClassGenericPassword,
                             serviceName,
                             serviceName,
                             username,
@@ -199,7 +199,7 @@ static NSString *HCKeychainUtilsErrorDomain = @"HCKeychainUtilsErrorDomain";
         
         NSDictionary *query = [[NSDictionary alloc] initWithObjects: objects forKeys: keys];
         
-        status = SecItemAdd((CFDictionaryRef) query, NULL);
+        status = SecItemAdd((CFDictionaryRef)query, NULL);
     }
     
     if (status != noErr)
@@ -215,7 +215,7 @@ static NSString *HCKeychainUtilsErrorDomain = @"HCKeychainUtilsErrorDomain";
     return YES;
 }
 
-+ (BOOL) deleteItemForUsername: (NSString *) username andServiceName: (NSString *) serviceName error: (NSError **) error
++ (BOOL)deleteItemForUsername:(NSString *)username andServiceName:(NSString *)serviceName error:(NSError **)error
 {
     if (!username || !serviceName)
     {
@@ -231,12 +231,12 @@ static NSString *HCKeychainUtilsErrorDomain = @"HCKeychainUtilsErrorDomain";
         *error = nil;
     }
     
-    NSArray *keys = [[NSArray alloc] initWithObjects: (NSString *) kSecClass, kSecAttrAccount, kSecAttrService, kSecReturnAttributes, nil];
-    NSArray *objects = [[NSArray alloc] initWithObjects: (NSString *) kSecClassGenericPassword, username, serviceName, kCFBooleanTrue, nil];
+    NSArray *keys = [[NSArray alloc] initWithObjects:(NSString *)kSecClass, kSecAttrAccount, kSecAttrService, kSecReturnAttributes, nil];
+    NSArray *objects = [[NSArray alloc] initWithObjects:(NSString *)kSecClassGenericPassword, username, serviceName, kCFBooleanTrue, nil];
     
     NSDictionary *query = [[NSDictionary alloc] initWithObjects: objects forKeys: keys];
     
-    OSStatus status = SecItemDelete((CFDictionaryRef) query);
+    OSStatus status = SecItemDelete((CFDictionaryRef)query);
     
     if (status != noErr)
     {
