@@ -6,7 +6,6 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef void(^HCDeviceSpaceBlock)(long long freeSpace, long long totalSpace);
 
 @interface UIDevice(HCKeychain)
 
