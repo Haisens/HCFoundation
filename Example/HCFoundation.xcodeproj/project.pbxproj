@@ -23,7 +23,6 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		C7E437491F909A7400803386 /* HCView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E437481F909A7400803386 /* HCView.m */; };
 		F1F5411BB6E2345B7936CF24 /* Pods_HCFoundation_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358BC0E4C659BD1965236883 /* Pods_HCFoundation_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,8 +64,6 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F0DE6C8EA915EA492977B07 /* Pods-HCFoundation_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCFoundation_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCFoundation_Tests/Pods-HCFoundation_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A510E0656C69EA4A0913A412 /* Pods-HCFoundation_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCFoundation_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCFoundation_Example/Pods-HCFoundation_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		C7E437471F909A7400803386 /* HCView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCView.h; sourceTree = "<group>"; };
-		C7E437481F909A7400803386 /* HCView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCView.m; sourceTree = "<group>"; };
 		DED709DFED130A57DBE914EA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E24B0E71E2A8E53209AEEA91 /* HCFoundation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = HCFoundation.podspec; path = ../HCFoundation.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FD6A1AA97DC748705A298D32 /* Pods-HCFoundation_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCFoundation_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCFoundation_Tests/Pods-HCFoundation_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,8 +148,6 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* HCViewController.h */,
 				6003F5A6195388D20070C39A /* HCViewController.m */,
-				C7E437471F909A7400803386 /* HCView.h */,
-				C7E437481F909A7400803386 /* HCView.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -409,7 +404,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* HCAppDelegate.m in Sources */,
-				C7E437491F909A7400803386 /* HCView.m in Sources */,
 				6003F5A7195388D20070C39A /* HCViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
