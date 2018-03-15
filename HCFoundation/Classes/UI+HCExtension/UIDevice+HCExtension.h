@@ -15,4 +15,11 @@ typedef void (^HCDeviceSpaceBlock)(long long freeSpace, long long totalSpace);
  
  */
 + (void)getDeviceSpace:(HCDeviceSpaceBlock)deviceBlock;
+
+/**
+ 获取手机型号
+
+ @return 手机型号
+ */
++ (NSString *)getDeviceModel;
 @end

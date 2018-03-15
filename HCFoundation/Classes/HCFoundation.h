@@ -12,5 +12,6 @@
 #import "UIDevice+HCKeychain.h"
 #import "UIImage+HCExtension.h"
 #import "HCMacro.h"
+#import "UIView+HCExtension.h"
 
 

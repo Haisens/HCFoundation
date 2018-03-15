@@ -68,7 +68,7 @@
 		C7E437471F909A7400803386 /* HCView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCView.h; sourceTree = "<group>"; };
 		C7E437481F909A7400803386 /* HCView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCView.m; sourceTree = "<group>"; };
 		DED709DFED130A57DBE914EA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		E24B0E71E2A8E53209AEEA91 /* HCFoundation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = HCFoundation.podspec; path = ../HCFoundation.podspec; sourceTree = "<group>"; };
+		E24B0E71E2A8E53209AEEA91 /* HCFoundation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = HCFoundation.podspec; path = ../HCFoundation.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		FD6A1AA97DC748705A298D32 /* Pods-HCFoundation_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCFoundation_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCFoundation_Tests/Pods-HCFoundation_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
