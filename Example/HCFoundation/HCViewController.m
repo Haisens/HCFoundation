@@ -8,7 +8,6 @@
 
 #import "HCViewController.h"
 #import "HCFoundation.h"
-#import "HCView.h"
 
 
 @interface HCViewController ()
@@ -20,8 +19,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    HCView *view = [[HCView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    [self.view addSubview:view];
     NSString *SERVICE_NAME = @"com.vrseen.uuid";//最好用程序的bundle id
     NSString * str =  [UIDevice getPasswordForUsername:@"UUID" andServiceName:SERVICE_NAME error:nil];  // 从keychain获取数据
     if ([str length]<=0)
